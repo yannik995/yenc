@@ -39,7 +39,7 @@ type Part struct {
 	// part num
 	Number int
 	// size from header
-	hsize int64
+	HeaderSize int64
 	// size from part trailer
 	Size int64
 	// file boundarys
@@ -122,7 +122,7 @@ func (d *decoder) readHeader() (err error) {
 		}
 		switch kv[0] {
 		case "size":
-			d.part.hsize, _ = strconv.ParseInt(kv[1], 10, 64)
+			d.part.HeaderSize, _ = strconv.ParseInt(kv[1], 10, 64)
 		case "line":
 			d.part.cols, _ = strconv.Atoi(kv[1])
 		case "part":
